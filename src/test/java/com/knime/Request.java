@@ -1,0 +1,48 @@
+package com.knime;
+import io.restassured.http.*;
+import org.junit.jupiter.api.*;
+import static io.restassured.RestAssured.given;
+import io.restassured.response.Response;
+
+
+
+
+public class Request {
+
+    String baseUrl="https://api.hub.knime.com";
+
+
+    @Test
+    public void Test1(){
+
+        String token = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ2SHpuYUhTS3RMWmszcnczVlJBN2M4eThsUHlVazU3YndMejRvekFZT1o4In0.eyJqdGkiOiI3ZTMwMjM2Ni0yM2RhLTQyZjgtYmJmZS1jODllNTM4N2Y2NTAiLCJleHAiOjE2NzU0NTA0ODcsIm5iZiI6MCwiaWF0IjoxNjc1NDM5Njg3LCJpc3MiOiJodHRwczovL2F1dGguaHViLmtuaW1lLmNvbS9hdXRoL3JlYWxtcy9rbmltZSIsImF1ZCI6WyJicm9rZXIiLCJhY2NvdW50Il0sInN1YiI6IjE3ZTczZTI1LTM1ZDMtNGQ0My05MmZjLWYxNmM5MzgyZWY4NSIsInR5cCI6IkJlYXJlciIsImF6cCI6Imh1Yi11aSIsIm5vbmNlIjoiNGZ2VFpiUFhuM2xpakVqY0JDYm5aalRiV0dTcVBxcERMWGZ1cnBfbTE5QSIsImF1dGhfdGltZSI6MTY3NTQyNzgyNSwic2Vzc2lvbl9zdGF0ZSI6ImQ5OThkM2QwLTMxOWUtNDcwMS04YzVmLTRlMDg4ZjFjMmE4NyIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9zdGFnZS5odWIua25pbWUuY29tIiwiaHR0cHM6Ly9odWIua25pbWUuY29tIl0sInJlc291cmNlX2FjY2VzcyI6eyJicm9rZXIiOnsicm9sZXMiOlsicmVhZC10b2tlbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZ3JvdXBzIHJvbGVzIGVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkJldGkiLCJncm91cHMiOlsiaHVidXNlciJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJiZXRpIiwiZ2l2ZW5fbmFtZSI6IkJldGkiLCJlbWFpbCI6ImJldHVsemVocmEubWF2dXNAZ21haWwuY29tIn0.fzAeiPAy3o1ND1ERcpsK4C0cAlyZEhJt-KCbxqESztKPoipFTKUTKnkotc7WMjEr3Dnj5Uehl3lhgZwJHilSnjJ62G8aTYTQTSYA15BHzvqJj3kT_NHC5pWBMKOOPlxGAhgGmAtCN3nbChXMqtPm2qNhnq6X0JMXPjDrIJgUwMYLGBmzfaWr1oQJ2DRlofiPbj4PmWq8Dm6BMuWzswVKW9ElbcQRtqXblcN1_wVCHs9k-Uq_YUmTnt5WQLkhZmUI9mmXcH-zt2oyHdqidRwFIa_L52cY2hme0ma05Avxalg-pU4BjTJ577zV9Fc6eqBoTTS1axW-VnJD8sHjlsi60g";
+
+
+        Response response= given().header("Authorization", token)
+                .accept(ContentType.JSON)
+                .when().put(baseUrl + "/repository/Users/beti/createnewfile");
+
+        System.out.println("response.statusCode() = " + response.statusCode());
+
+    }
+
+    @Test
+    public void Test2(){
+
+        String token="Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ2SHpuYUhTS3RMWmszcnczVlJBN2M4eThsUHlVazU3YndMejRvekFZT1o4In0.eyJqdGkiOiI3ZTMwMjM2Ni0yM2RhLTQyZjgtYmJmZS1jODllNTM4N2Y2NTAiLCJleHAiOjE2NzU0NTA0ODcsIm5iZiI6MCwiaWF0IjoxNjc1NDM5Njg3LCJpc3MiOiJodHRwczovL2F1dGguaHViLmtuaW1lLmNvbS9hdXRoL3JlYWxtcy9rbmltZSIsImF1ZCI6WyJicm9rZXIiLCJhY2NvdW50Il0sInN1YiI6IjE3ZTczZTI1LTM1ZDMtNGQ0My05MmZjLWYxNmM5MzgyZWY4NSIsInR5cCI6IkJlYXJlciIsImF6cCI6Imh1Yi11aSIsIm5vbmNlIjoiNGZ2VFpiUFhuM2xpakVqY0JDYm5aalRiV0dTcVBxcERMWGZ1cnBfbTE5QSIsImF1dGhfdGltZSI6MTY3NTQyNzgyNSwic2Vzc2lvbl9zdGF0ZSI6ImQ5OThkM2QwLTMxOWUtNDcwMS04YzVmLTRlMDg4ZjFjMmE4NyIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9zdGFnZS5odWIua25pbWUuY29tIiwiaHR0cHM6Ly9odWIua25pbWUuY29tIl0sInJlc291cmNlX2FjY2VzcyI6eyJicm9rZXIiOnsicm9sZXMiOlsicmVhZC10b2tlbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZ3JvdXBzIHJvbGVzIGVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkJldGkiLCJncm91cHMiOlsiaHVidXNlciJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJiZXRpIiwiZ2l2ZW5fbmFtZSI6IkJldGkiLCJlbWFpbCI6ImJldHVsemVocmEubWF2dXNAZ21haWwuY29tIn0.fzAeiPAy3o1ND1ERcpsK4C0cAlyZEhJt-KCbxqESztKPoipFTKUTKnkotc7WMjEr3Dnj5Uehl3lhgZwJHilSnjJ62G8aTYTQTSYA15BHzvqJj3kT_NHC5pWBMKOOPlxGAhgGmAtCN3nbChXMqtPm2qNhnq6X0JMXPjDrIJgUwMYLGBmzfaWr1oQJ2DRlofiPbj4PmWq8Dm6BMuWzswVKW9ElbcQRtqXblcN1_wVCHs9k-Uq_YUmTnt5WQLkhZmUI9mmXcH-zt2oyHdqidRwFIa_L52cY2hme0ma05Avxalg-pU4BjTJ577zV9Fc6eqBoTTS1axW-VnJD8sHjlsi60g";
+
+        Response response= given().header("Authorization", token)
+                .accept(ContentType.JSON)
+                .when().delete(baseUrl + "/repository/Users/beti/createnewfile");
+
+        System.out.println("response.statusCode() = " + response.statusCode());
+
+
+    }
+
+
+
+
+}
+
+
